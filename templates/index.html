@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Automated Employee Onboarding Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="stats-container">
+
+    <div class="stat-card">
+        <h3>Total Employees</h3>
+        <div class="stat-number">
+            {{ total_employees }}
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending Tasks</h3>
+        <div class="stat-number">
+            {{ pending_tasks }}
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <h3>Completed Tasks</h3>
+        <div class="stat-number">
+            {{ completed_tasks }}
+        </div>
+    </div>
+
+</div>
+    <a href="/new">Add New Employee</a>
+
+    <hr>
+
+    {% for employee in employees %}
+        <div class="card">
+
+            <strong>{{ employee[1] }} {{ employee[2] }}</strong><br>
+            Email: {{ employee[3] }}<br>
+            Department: {{ employee[4] }}<br>
+            Job Title: {{ employee[5] }}<br>
+            Status: {{ employee[8] }}<br>
+            <a href="/employee/{{ employee[0] }}">View Details</a>
+            
+        </div>
+        <hr>
+    {% endfor %}
+</body>
+</html>
