@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>{{ employee[1] }} {{ employee[2] }}</h1>
+
+    <p>Email: {{ employee[3] }}</p>
+    <p>Department: {{ employee[4] }}</p>
+    <p>Job Title: {{ employee[5] }}</p>
+    <p>Manager: {{ employee[6] }}</p>
+    <p>Start Date: {{ employee[7] }}</p>
+    <p>Laptop Needed: {{ employee[8] }}</p>
+
+    <h2>Onboarding Tasks</h2>
+
+    {% for task in tasks %}
+        <p>
+            {{ task[2] }} — <strong>{{ task[3] }}</strong>
+
+            {% if task[3] != "Completed" %}
+                <a href="/task/{{ task[0] }}/complete">Mark Complete</a>
+            {% endif %}
+        </p>
+    {% endfor %}
+
+    <br>
+    <a href="/">Back to Dashboard</a>
+</body>
+</html>
